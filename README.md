@@ -48,6 +48,30 @@ Recent updates include **Smart AI Modes** (Student, Research, Quick Summary) to 
 
 <br/>
 
+## 🚀 Quick Start: Install & Use
+
+Follow these steps to get Context(AI) running in your browser in under 2 minutes:
+
+### Step 1: Download the Extension
+1. Go to the [Releases](https://github.com/DhruvOzha85/hexslayerz/releases) page of this repository (or clone it locally using `git clone https://github.com/DhruvOzha85/hexslayerz.git`).
+2. If downloading a release, extract the downloaded `.zip` file to a folder on your computer.
+3. If cloning, navigate to the `Extension` folder, run `npm install`, and then `npm run build` to generate the `dist` folder.
+
+### Step 2: Install in Chrome
+1. Open Google Chrome and type `chrome://extensions/` in your address bar, then press **Enter**.
+2. Turn on **Developer mode** by toggling the switch in the top right corner.
+3. Click the **Load unpacked** button that appears in the top left.
+4. Select the `dist` folder (located inside the extracted folder or the `Extension` directory). 
+5. The **Context(AI)** extension will now appear in your list of installed extensions. 
+
+### Step 3: Setup & Usage
+1. **Pin the Extension**: Click the "puzzle piece" extension icon in Chrome's top-right toolbar and click the pin icon next to Context(AI) for easy access.
+2. **Add API Key**: Click the Context(AI) icon to open the popup. Go to the **Settings** (⚙️) tab and enter your AI Provider API key (e.g., Google Gemini or Groq). Your key is stored securely in your browser's local storage.
+3. **Extract Conversations**: Open a ChatGPT thread, click the Context(AI) icon, and click **Extract Checkpoint**. 
+4. **Chat with Any Page**: Visit any webpage, article, or PDF. Open the extension and click **Extract Page Content** to summarize it, read it aloud, or ask questions grounded in the page's content!
+
+<br/>
+
 ## 🎬 Live in the Popup
 
 <div align="center">
@@ -255,7 +279,7 @@ Extension/
 
 <br/>
 
-## 🚀 Getting Started
+## 🏗 Developer Quick Start
 
 ```bash
 # 1. Clone
