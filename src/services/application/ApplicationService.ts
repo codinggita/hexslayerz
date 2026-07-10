@@ -131,7 +131,7 @@ export class ApplicationService {
     checkpoints: Checkpoint[],
     direction: "asc" | "desc",
   ): Checkpoint[] {
-    return CheckpointFilter.sortByCreatedAt(checkpoints, direction);
+    return CheckpointFilter.sortByDate(checkpoints, direction);
   }
 
   // --- Content Extraction ---
