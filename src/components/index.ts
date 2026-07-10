@@ -9,3 +9,4 @@ export * from "./ContentView";
 export * from "./ContentChat";
 export * from "./ScreenReaderButton";
 export * from "./OnboardingGuide";
+export * from "./HomeView";
