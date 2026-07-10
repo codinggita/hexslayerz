@@ -10,6 +10,14 @@ export function OnboardingGuide() {
     if (hasSeen !== "true") {
       setIsVisible(true);
     }
+
+    const handleOpen = () => {
+      setStep(0);
+      setIsVisible(true);
+    };
+
+    window.addEventListener("open-onboarding", handleOpen);
+    return () => window.removeEventListener("open-onboarding", handleOpen);
   }, []);
 
   const finishOnboarding = () => {
