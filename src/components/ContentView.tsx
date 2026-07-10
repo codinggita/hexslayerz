@@ -203,26 +203,40 @@ export function ContentView() {
               <h2 className="text-base font-bold text-white leading-tight">
                 {extractedContent.title}
               </h2>
-              <button
-                onClick={async () => {
-                  const tab = await TabService.getActiveTab();
-                  if (tab?.id) {
-                    await TabService.injectReaderModal(
-                      tab.id,
-                      extractedContent.title,
-                      extractedContent.content
-                    );
-                    window.close(); // Close extension popup to reveal the host page modal
-                  }
-                }}
-                className="shrink-0 flex items-center gap-1.5 rounded-lg bg-violet-600/20 px-3 py-1.5 text-xs font-bold text-violet-400 transition-all hover:bg-violet-600 hover:text-white"
-                title="Read in Full Screen on the Webpage"
-              >
-                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                </svg>
-                Read Full
-              </button>
+              <div className="flex items-center gap-1.5 shrink-0">
+                <button
+                  onClick={() => {
+                    const input = document.getElementById("qa-input");
+                    input?.scrollIntoView({ behavior: "smooth", block: "center" });
+                    setTimeout(() => input?.focus(), 300);
+                  }}
+                  className="flex items-center gap-1.5 rounded-lg bg-emerald-600/20 px-3 py-1.5 text-xs font-bold text-emerald-400 transition-all hover:bg-emerald-600 hover:text-white shadow-sm hover:shadow-emerald-900/50 hover:-translate-y-0.5"
+                  title="Scroll to AI Chat"
+                >
+                  <Sparkles className="h-3.5 w-3.5" />
+                  Ask AI
+                </button>
+                <button
+                  onClick={async () => {
+                    const tab = await TabService.getActiveTab();
+                    if (tab?.id) {
+                      await TabService.injectReaderModal(
+                        tab.id,
+                        extractedContent.title,
+                        extractedContent.content
+                      );
+                      window.close(); // Close extension popup to reveal the host page modal
+                    }
+                  }}
+                  className="flex items-center gap-1.5 rounded-lg bg-violet-600/20 px-3 py-1.5 text-xs font-bold text-violet-400 transition-all hover:bg-violet-600 hover:text-white shadow-sm hover:shadow-violet-900/50 hover:-translate-y-0.5"
+                  title="Read in Full Screen on the Webpage"
+                >
+                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                  </svg>
+                  Read Full
+                </button>
+              </div>
             </div>
             <div className="mt-2 flex items-center gap-2">
               <span className="rounded bg-emerald-900/50 px-1.5 py-0.5 text-[10px] font-medium text-emerald-400 uppercase tracking-wider">
