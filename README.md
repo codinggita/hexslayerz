@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src=".github/assets/banner.png" alt="LSCS v2 banner" width="100%" />
+<img src=".github/assets/banner.svg" alt="LSCS v2 banner" width="100%" />
 
 ### 🧠 Local Summarization &amp; Checkpoint System — a Chrome extension that reads, remembers, and talks back.
 
@@ -49,7 +49,7 @@ But conversation checkpointing is only half the extension. LSCS v2 also ships a 
 ## 🎬 Live in the Popup
 
 <div align="center">
-<img src=".github/assets/demo.png" alt="LSCS v2 popup walkthrough animation" width="380"/>
+<img src=".github/assets/demo.svg" alt="LSCS v2 popup walkthrough animation" width="380"/>
 <br/>
 <sub>Checkpoint Manager → Content Extractor → Settings, cycling automatically</sub>
 </div>
@@ -57,7 +57,7 @@ But conversation checkpointing is only half the extension. LSCS v2 also ships a 
 <br/>
 
 <div align="center">
-<img src=".github/assets/screenshots_strip.png" alt="LSCS v2 three panel screenshots: checkpoints, content extractor, settings" width="100%"/>
+<img src=".github/assets/screenshots_strip.svg" alt="LSCS v2 three panel screenshots: checkpoints, content extractor, settings" width="100%"/>
 </div>
 
 <table>
