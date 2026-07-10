@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 600" width="380" height="600">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .header { fill: #1e293b; }
+      .text-light { fill: #f8fafc; font-family: -apple-system, sans-serif; }
+      .text-dim { fill: #94a3b8; font-family: -apple-system, sans-serif; }
+      .card { fill: #1e293b; rx: 8; }
+      .accent { fill: #3b82f6; }
+      @keyframes slideIn {
+        0%, 100% { opacity: 0; transform: translateX(20px); }
+        5%, 30% { opacity: 1; transform: translateX(0); }
+        35% { opacity: 0; transform: translateX(-20px); }
+      }
+      .panel1 { animation: slideIn 12s infinite; }
+      .panel2 { animation: slideIn 12s infinite 4s; opacity: 0; }
+      .panel3 { animation: slideIn 12s infinite 8s; opacity: 0; }
+    </style>
+  </defs>
+  
+  <rect width="380" height="600" rx="12" class="bg" />
+  
+  <!-- Header -->
+  <rect width="380" height="60" class="header" />
+  <circle cx="30" cy="30" r="12" class="accent" />
+  <text x="55" y="35" class="text-light" font-size="16" font-weight="bold">LSCS v2</text>
+  
+  <g class="panel1">
+    <text x="20" y="100" class="text-light" font-size="18" font-weight="bold">Checkpoints</text>
+    
+    <rect x="20" y="130" width="340" height="90" class="card" />
+    <circle cx="45" cy="155" r="10" fill="#10b981" />
+    <text x="65" y="160" class="text-light" font-size="14" font-weight="bold">Next.js Architecture</text>
+    <text x="45" y="190" class="text-dim" font-size="12">Discussed React Server Components...</text>
+    <text x="300" y="200" class="text-dim" font-size="10">2m ago</text>
+
+    <rect x="20" y="235" width="340" height="90" class="card" />
+    <circle cx="45" cy="260" r="10" fill="#f59e0b" />
+    <text x="65" y="265" class="text-light" font-size="14" font-weight="bold">Python Memory Leak</text>
+    <text x="45" y="295" class="text-dim" font-size="12">Found issue in garbage collector...</text>
+    <text x="300" y="305" class="text-dim" font-size="10">1h ago</text>
+  </g>
+
+  <g class="panel2">
+    <text x="20" y="100" class="text-light" font-size="18" font-weight="bold">Page Content</text>
+    <rect x="20" y="130" width="340" height="300" class="card" />
+    <text x="40" y="160" class="text-light" font-size="14" font-weight="bold">Understanding React Hooks</text>
+    <rect x="40" y="180" width="300" height="8" fill="#334155" rx="4" />
+    <rect x="40" y="200" width="280" height="8" fill="#334155" rx="4" />
+    <rect x="40" y="220" width="290" height="8" fill="#334155" rx="4" />
+    <rect x="40" y="240" width="250" height="8" fill="#334155" rx="4" />
+    
+    <rect x="20" y="450" width="340" height="50" class="card" stroke="#334155" />
+    <text x="40" y="480" class="text-dim" font-size="12">Ask a question about this page...</text>
+  </g>
+
+  <g class="panel3">
+    <text x="20" y="100" class="text-light" font-size="18" font-weight="bold">Settings</text>
+    
+    <rect x="20" y="130" width="340" height="60" class="card" />
+    <text x="40" y="165" class="text-light" font-size="14">AI Provider</text>
+    <rect x="260" y="145" width="80" height="30" fill="#334155" rx="6" />
+    <text x="270" y="165" class="text-light" font-size="12">Gemini Pro</text>
+
+    <rect x="20" y="205" width="340" height="60" class="card" />
+    <text x="40" y="240" class="text-light" font-size="14">Voice Reader</text>
+    <rect x="310" y="225" width="36" height="20" fill="#3b82f6" rx="10" />
+    <circle cx="336" cy="235" r="8" fill="#fff" />
+  </g>
+
+  <!-- Bottom Nav -->
+  <rect x="0" y="530" width="380" height="70" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+  <circle cx="80" cy="565" r="16" fill="#3b82f6" />
+  <circle cx="190" cy="565" r="16" fill="#1e293b" />
+  <circle cx="300" cy="565" r="16" fill="#1e293b" />
+</svg>
