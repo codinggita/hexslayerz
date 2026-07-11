@@ -5,8 +5,10 @@
   "description": "Context(AI) - Smart Web Page Extractor & AI Assistant",
   "version": "2.0.0",
   "action": {
-    "default_popup": "popup.html",
     "default_title": "Context(AI)"
+  },
+  "side_panel": {
+    "default_path": "popup.html"
   },
   "background": {
     "service_worker": "background.js",
@@ -22,5 +24,5 @@
   ],
   "icons": {},
   "host_permissions": ["<all_urls>"],
-  "permissions": ["storage", "activeTab", "scripting", "tabs"]
+  "permissions": ["storage", "activeTab", "scripting", "tabs", "sidePanel"]
 }

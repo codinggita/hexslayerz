@@ -51,7 +51,7 @@ function App() {
   }, [checkpoints, providerFilter, searchQuery, sortDirection]);
 
   return (
-    <div className="flex h-[600px] w-[400px] flex-col bg-black p-5 font-sans text-white tracking-tight">
+    <div className="relative flex h-screen w-full min-w-[360px] flex-col bg-[#0D1117] p-5 font-sans text-white overflow-hidden tracking-tight antialiased selection:bg-violet-500/30">
       <OnboardingGuide />
       <Header activeView={activeView} setActiveView={setActiveView} />
 
