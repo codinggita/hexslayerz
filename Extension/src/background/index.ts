@@ -13,6 +13,14 @@ chrome.runtime.onInstalled.addListener((details) => {
       chrome.runtime.getManifest().version,
     );
   }
+
+  // Setup Side Panel behavior or fallback to popup
+  if (chrome.sidePanel && chrome.sidePanel.setPanelBehavior) {
+    chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true }).catch(console.error);
+  } else {
+    // Graceful fallback for older Chrome versions without sidePanel API
+    chrome.action.setPopup({ popup: "popup.html" });
+  }
 });
 
 chrome.runtime.onMessage.addListener(

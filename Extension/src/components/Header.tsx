@@ -1,4 +1,6 @@
 import { useCheckpointStore } from "../stores";
+import { Settings, FileText, HelpCircle, RefreshCw, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
 type ViewType = "checkpoints" | "content" | "settings" | "shopping";
 
@@ -17,141 +19,98 @@ export function Header({ activeView, setActiveView }: Props) {
     shopping: "Shopping Assistant",
   };
 
+  const NavButton = ({ 
+    isActive, 
+    onClick, 
+    icon: Icon, 
+    title
+  }: any) => {
+    const baseClasses = "relative flex items-center justify-center p-2.5 rounded-xl transition-all duration-300 outline-none";
+    const activeClasses = isActive 
+      ? `bg-white/10 text-white shadow-sm ring-1 ring-white/20` 
+      : `text-neutral-400 hover:bg-white/5 hover:text-neutral-200`;
+
+    return (
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={onClick}
+        className={`${baseClasses} ${activeClasses}`}
+        title={title}
+        aria-label={title}
+      >
+        <Icon size={18} strokeWidth={isActive ? 2.5 : 2} />
+      </motion.button>
+    );
+  };
+
   return (
-    <div className="flex items-center justify-between pb-5">
-      <div>
-        <h1 className="text-2xl font-extrabold text-white tracking-tighter">Context(AI)</h1>
-        <p className="text-[11px] font-medium text-neutral-400 uppercase tracking-wider mt-0.5">{subtitleMap[activeView]}</p>
+    <div className="flex flex-col gap-5 px-2 pt-4 pb-6">
+      {/* Top Row: Logo & Subtitle */}
+      <div className="flex flex-col gap-1.5">
+        <div className="flex items-center gap-2.5">
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 shadow-lg shadow-violet-500/20">
+            <Sparkles size={14} className="text-white" />
+          </div>
+          <h1 className="text-xl font-bold tracking-tight text-white/95 leading-none">Context(AI)</h1>
+        </div>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-500 leading-tight">{subtitleMap[activeView]}</p>
       </div>
 
-      <div className="flex items-center gap-2">
-        {/* Help / Guide Button */}
-        <button
-          onClick={() => window.dispatchEvent(new Event("open-onboarding"))}
-          className="rounded p-2 text-neutral-400 hover:bg-neutral-800 hover:text-white transition-colors"
-          title="How to use"
-          aria-label="How to use"
-        >
-          <svg
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </button>
-        {/* Content Extractor Tab */}
-        <button
-          onClick={() =>
-            setActiveView(activeView === "content" ? "checkpoints" : "content")
-          }
-          className={`rounded p-2 transition-colors ${
-            activeView === "content"
-              ? "bg-emerald-900/50 text-emerald-400 hover:bg-emerald-900/70"
-              : "text-neutral-400 hover:bg-neutral-800 hover:text-white"
-          }`}
-          title={
-            activeView === "content"
-              ? "Back to Checkpoints"
-              : "Open Content Extractor"
-          }
-          aria-label={
-            activeView === "content"
-              ? "Back to Checkpoints"
-              : "Open Content Extractor"
-          }
-        >
-          <svg
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
-            />
-          </svg>
-        </button>
+      {/* Bottom Row: Icons & Action Button */}
+      <div className="flex items-center justify-between w-full">
+        <div className="flex items-center gap-2.5">
+          <NavButton
+            icon={HelpCircle}
+            onClick={() => window.dispatchEvent(new Event("open-onboarding"))}
+            title="How to use"
+          />
+          
+          <NavButton
+            isActive={activeView === "content"}
+            icon={FileText}
+            onClick={() => setActiveView(activeView === "content" ? "checkpoints" : "content")}
+            title="Content Extractor"
+          />
 
-        {/* Settings Tab */}
-        <button
-          onClick={() =>
-            setActiveView(
-              activeView === "settings" ? "checkpoints" : "settings",
-            )
-          }
-          className={`rounded p-2 transition-colors ${
-            activeView === "settings"
-              ? "bg-blue-900/50 text-blue-400 hover:bg-blue-900/70"
-              : "text-neutral-400 hover:bg-neutral-800 hover:text-white"
-          }`}
-          title={
-            activeView === "settings" ? "Back to Checkpoints" : "Open Settings"
-          }
-          aria-label={
-            activeView === "settings" ? "Back to Checkpoints" : "Open Settings"
-          }
-        >
-          <svg
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-          </svg>
-        </button>
+          <NavButton
+            isActive={activeView === "settings"}
+            icon={Settings}
+            onClick={() => setActiveView(activeView === "settings" ? "checkpoints" : "settings")}
+            title="Settings"
+          />
 
-
-        {activeView === "checkpoints" && (
-          <button
-            onClick={loadCheckpoints}
-            disabled={isLoading}
-            title="Refresh Checkpoints"
-            aria-label="Refresh Checkpoints"
-            className="rounded p-2 text-neutral-400 hover:bg-neutral-800 hover:text-white disabled:opacity-50 transition-colors"
-          >
-            <svg
-              className="h-4 w-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {activeView === "checkpoints" && (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={loadCheckpoints}
+              disabled={isLoading}
+              title="Refresh Checkpoints"
+              aria-label="Refresh Checkpoints"
+              className="flex items-center justify-center p-2.5 rounded-xl text-neutral-400 hover:bg-white/5 hover:text-neutral-200 disabled:opacity-50 transition-all duration-300 outline-none"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-              />
-            </svg>
-          </button>
-        )}
+              <motion.div animate={isLoading ? { rotate: 360 } : {}} transition={{ repeat: Infinity, duration: 1, ease: "linear" }}>
+                <RefreshCw size={18} strokeWidth={2} />
+              </motion.div>
+            </motion.button>
+          )}
+        </div>
 
-        <button
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => createCheckpoint()}
           disabled={isLoading}
           aria-label="Extract Checkpoint"
-          className="whitespace-nowrap rounded-lg bg-violet-600 px-4 py-2 text-xs font-bold text-white transition-all hover:bg-violet-500 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:hover:bg-violet-600 disabled:hover:scale-100 shadow-lg shadow-violet-900/20"
+          className="relative flex shrink-0 items-center justify-center gap-1.5 overflow-hidden rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-5 py-2.5 text-[13px] font-bold text-white shadow-lg shadow-violet-500/25 transition-all duration-300 disabled:opacity-70 disabled:hover:scale-100 outline-none border border-white/10"
         >
-          {isLoading ? "Extracting..." : "Extract Checkpoint"}
-        </button>
+          <span className="relative z-10">{isLoading ? "Extracting..." : "Extract"}</span>
+          {!isLoading && (
+            <div className="absolute inset-0 z-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-700 ease-in-out" />
+          )}
+        </motion.button>
       </div>
     </div>
   );
 }
-
